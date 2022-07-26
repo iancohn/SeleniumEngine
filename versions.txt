@@ -1,0 +1,5 @@
+__version__=1.0.5
+
+SeleniumModuleVersion=3.141.0
+ChromeAppVersion=94.0.4606.61
+ChromeWebDriverVersion=94.0.4606.61
