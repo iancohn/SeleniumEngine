@@ -25,15 +25,19 @@ After installation, run the following for variable details
 ```bash
 autopkg processor-info Selenium
 ```
+### Utility Objects
 When initialized, the processor creates a few objects for use during its run.
-- **browser**: This is a Chrome webdriver object from the Selenium module.
-- **keypress**: This is a utility object from the root webdriver object that can be used to insert key presses for ENTER/RETURN, etc. For example:
-	* keypress.ENTER
-	* keypress.ESCAPE
-- **time**: A time object, primarily intended to enable waiting for a short period of time. For example:
-	* time.sleep(5.0)
-- **fnmatch**: A utility object to allow regex/wildcard matching. For example:
-	* fnmatch.fnmatch('myString','*ring') => True
+- **```browser```**: This is a Chrome webdriver object from the Selenium module.
+- **```keypress```**: This is a utility object from the root webdriver object that can be used to insert key presses for ENTER/RETURN, etc. For example:
+	* ```keypress.ENTER```
+	* ```keypress.ESCAPE```
+- **```time```**: A time object, primarily intended to enable waiting for a short period of time. For example:
+	* ```time.sleep(5.0)```
+- **```fnmatch```**: A utility object to allow regex/wildcard matching. For example:
+	* ```fnmatch.fnmatch('myString','*ring')``` => True
+
+### Ending a SeleniumEngine Sequence
+After the last Selenium command is run, SeleniumEngine performs a regex match against ```self.content``` using the same regex matching as the built in URLTextSearcher.  If a recipe does not explicitly set ```self.content``` to a string, SeleniumEngine uses the entire source of the page that the ```browser``` object is viewing following the last command.
 
 ## Installation
 ```bash
