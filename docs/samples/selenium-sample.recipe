@@ -59,9 +59,6 @@ if len(bxwraps) >= 1:
 				<string>IGNORECASE</string>
 				<key>selenium_commands</key>
 				<array>
-					<string>#browser.set_page_load_timeout(5.0)</string>
-					<string>#browser.implicitly_wait(5.0)</string>
-					<string>#browser.refresh()</string>
 					<string>time.sleep(15.0)</string>
 					<string>%bypass_new_word%</string>
 					<string>search = browser.find_element_by_id('globalSearch')</string>
