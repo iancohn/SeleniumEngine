@@ -1,4 +1,9 @@
 # Select an option from a dropdown menu
+#
+# modify the variables below, then enclose the entire code 
+# snippet in a CDATA tag and use it as one of your 
+# selenium_command items.
+
 elementIdDropdownMenu = '' # Set this to the element ID of the drop down menu.
 tagNameDdOption = 'option' # Set this to the tag name of each option in the drop down
 selectOption = '' # Set this to the text of the option you want to select
