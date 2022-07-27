@@ -8,7 +8,7 @@ An AutoPkg url provider that can crawl more complex websites than the built in c
 	* [Utility Objects](#utility-objects)
 	* [Ending a Selenium Sequence](#ending-a-seleniumengine-sequence)
 	* [RegEx Matching](#regex-matching)
-* [Sample Recipes](#sample-recipes)
+* [Code Samples](#code-samples)
 
 
 > **Caution**: Using the Selenium processor allows python script to execute locally on the system.  When using this processor, be sure you understand and have vetted each of the commands that will be run.
@@ -57,8 +57,11 @@ If not otherwise defined in the processor, SeleniumEngine will return the text o
 ```bash
 autopkg run SeleniumEngine.install
 ```
-## Sample Recipes
-[Sample 1](docs/samples/selenium-sample.recipe): A simple recipe that returns the definition of a word as an autopkg variable
+## Code Samples
+[Full Recipe Sample 1](docs/samples/selenium-sample.recipe): A simple recipe that returns the definition of a word as an autopkg variable
+
+[Snippets](docs/snippets)
+
 
 &nbsp;
 &nbsp;
