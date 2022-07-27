@@ -42,7 +42,7 @@ If not otherwise defined in the processor, SeleniumEngine will return the text o
 
 Example Recipe
 
-```python:docs/samples/selenium-sample.recipe
+```docs/samples/selenium-sample.recipe
 
 ```
 
