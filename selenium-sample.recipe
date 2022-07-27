@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Demo the capabilities of SeleniumEngine by searching dictionary.com for a definition</string>
+	<key>Identifier</key>
+	<string>local.download.selenium-sample</string>
+	<key>Input</key>
+	<dict>
+		<key>WORD</key>
+		<string>convoluted</string>
+		<key>bypass_new_word</key>
+		<string><![CDATA[
+if len(browser.find_elements_by_class_name('sailthru-overlay-close')):
+ self.output('Website is attempting to get you to sign up for something!! Close that popup!',verbose_level=1)
+ browser.find_element_by_class_name('sailthru-overlay-close').click()
+else:
+ self.output('No popup detected', verbose_level=3)
+
+          ]]></string>
+			<key>bypass_advert</key>
+			<string><![CDATA[
+self.output('Detecting popup advert.',verbose_level=3)
+bxwraps = browser.find_elements_by_class_name('bx-wrap')
+if len(bxwraps) >= 1:
+  self.output('There are {} bx-wrap elements.'.format(str(len(bxwraps))),verbose_level=3)
+  for bxwrap in bxwraps:
+    self.output('Processing element {}'.format(bxwrap.id),verbose_level=3)
+    if True == bxwrap.is_displayed():
+      self.output('Popup advert detected, bypassing it now',verbose_level=1)
+      for b in bxwrap.find_elements_by_tag_name('a'):
+        if fnmatch.fnmatch(b.get_attribute('data-click'), "close"):
+          self.output('Found what appears to be a close button, clicking it now.',verbose_level=3)
+          b.click()
+          break
+        else:
+          self.output('This is not a close button',verbose_level=3)
+          continue
+    else:
+      continue
+
+          ]]></string>  
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Selenium</string>
+			<key>Arguments</key>
+			<dict>
+				<key>primary_url</key>
+				<string>https://dictionary.com</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;definition&gt;.*)</string>
+				<key>re_flags</key>
+				<string>IGNORECASE</string>
+				<key>selenium_commands</key>
+				<array>
+					<string>#browser.set_page_load_timeout(5.0)</string>
+					<string>#browser.implicitly_wait(5.0)</string>
+					<string>#browser.refresh()</string>
+					<string>time.sleep(15.0)</string>
+					<string>%bypass_new_word%</string>
+					<string>search = browser.find_element_by_id('globalSearch')</string>
+					<string>search.send_keys('%WORD%')</string>
+					<string>search.send_keys(keypress.ENTER)</string>
+					<string>#time.sleep(10.0)</string>
+					<string>#browser.refresh()</string>
+					<string>time.sleep(50.0)</string>
+					<string>%bypass_advert%</string>
+					<string>spans = browser.find_elements_by_tag_name('span')</string>
+					<string><![CDATA[
+if len(spans) >= 1:
+	self.output('Iterating through spans',verbose_level=3)
+	for span in spans:
+		if fnmatch.fnmatch(span.get_attribute('class'),"*one-click-content*"):
+			self.output('Found definition',verbose_level=1)
+			self.content = span.text
+			break
+					]]></string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
