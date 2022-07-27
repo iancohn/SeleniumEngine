@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Demo the capabilities of SeleniumEngine by searching dictionary.com for a definition</string>
 	<key>Identifier</key>
-	<string>local.define.selenium-sample</string>
+	<string>local.selenium-sample.define</string>
 	<key>Input</key>
 	<dict>
 		<key>WORD</key>

@@ -1,6 +1,16 @@
 # SeleniumEngine
 An AutoPkg url provider that can crawl more complex websites than the built in command which relies on CURL.
 &nbsp;
+# Contents
+* [History](#history)
+* [Example Use Case](#example-use-case)
+* [Basic Concepts](#basic-concepts)
+	* [Utility Objects](#utility-objects)
+	* [Ending a Selenium Sequence](#ending-a-seleniumengine-sequence)
+	* [RegEx Matching](#regex-matching)
+* [Sample Recipes](#sample-recipes)
+
+
 > **Caution**: Using the Selenium processor allows python script to execute locally on the system.  When using this processor, be sure you understand and have vetted each of the commands that will be run.
 
 ## History
@@ -38,19 +48,20 @@ When initialized, the processor creates a few objects for use during its run.
 
 ### Ending a SeleniumEngine Sequence
 After the last Selenium command is run, SeleniumEngine performs a regex match against ```self.content``` using the same regex matching as the built in URLTextSearcher.  If a recipe does not explicitly set ```self.content``` to a string, SeleniumEngine uses the entire source of the page that the ```browser``` object is viewing following the last command.
+### RegEx Matching
+
+If not otherwise defined in the processor, SeleniumEngine will return the text of the page source of the last url called by the browser object. The ```selenium_commands``` array in the autopkg processor arguments will perform regex matching/transformations using the code written by [Greg Neagle, Timoty Sutton,Per Olofsson, and Michael Moravec](https://github.com/autopkg/autopkg/wiki/Processor-URLTextSearcher).
+
 
 ## Installation
 ```bash
 autopkg run SeleniumEngine.install
 ```
-### Basic Use
+## Sample Recipes
+[Sample 1](docs/samples/selenium-sample.recipe): A simple recipe that returns the definition of a word as an autopkg variable
 
-If not otherwise defined in the processor, SeleniumEngine will return the text of the page source of the last url called by the browser object. The **selenium_commands** array in the autopkg processor arguments will perform regex matching/transformations using the code written by [Greg Neagle, Timoty Sutton,Per Olofsson, and Michael Moravec](https://github.com/autopkg/autopkg/wiki/Processor-URLTextSearcher).
-
-[Example Recipe](docs/samples/selenium-sample.recipe)
-
-
-
+&nbsp;
+&nbsp;
 
 ## Other Notes
 - Examples in this readme and the provided sample recipe purposefully do not use any known software vendor. The thinking behind this is that generally these vendors have made conscious decisions to 'hide' their publicly available installers specifically to evade programmatic retrieval, and that exposing the techniques used by a recipe to get around these may trigger the web developers to re-work their sites to again get around this, which would likely require any dependant recipes to require updates again.
