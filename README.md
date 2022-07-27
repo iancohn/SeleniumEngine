@@ -19,3 +19,29 @@ You do some digging and find that you can just inject search term into the url, 
 ![site-with-popup](/docs/images/site-with-popup.png)
 
 SeleniumEngine allows recipes to search a website's HTML to impersonate an active user session, by clicking through popups when displayed, or otherwise navigating a site where, for example, a search term needs to be entered, or a drop down menu needs to be used.
+
+## Basic Concepts
+After installation, run the following for variable details
+```bash
+autopkg processor-info Selenium
+```
+When initialized, the processor creates a few objects for use during its run.
+- **browser**: This is a Chrome webdriver object from the Selenium module.
+- **keypress**: This is a utility object from the root webdriver object that can be used to insert key presses for ENTER/RETURN, etc. For example:
+	* keypress.ENTER
+	* keypress.ESCAPE
+- **time**: A time object, primarily intended to enable waiting for a short period of time. For example:
+	* time.sleep(5.0)
+- **fnmatch**: A utility object to allow regex/wildcard matching. For example:
+	* fnmatch.fnmatch('myString','*ring') => True
+
+## Installation
+
+## Usage
+
+### Basic 
+
+If not otherwise defined in the processor, SeleniumEngine will return the text of the page source of the last url called by the browser object. The **selenium_commands** array in the autopkg processor arguments will perform regex matching/transformations using the code written by [Greg Neagle, Timoty Sutton,Per Olofsson, and Michael Moravec](https://github.com/autopkg/autopkg/wiki/Processor-URLTextSearcher).
+
+## Other Notes
+- Examples in this readme and the provided sample recipe purposefully do not use any known software vendor. The thinking behind this is that generally these vendors have made conscious decisions to 'hide' their publicly available installers specifically to evade programmatic retrieval, and that exposing the techniques used by a recipe to get around these may trigger the web developers to re-work their sites to again get around this, which would likely require any dependant recipes to require updates again.
