@@ -41,7 +41,8 @@ When initialized, the processor creates a few objects for use during its run.
 If not otherwise defined in the processor, SeleniumEngine will return the text of the page source of the last url called by the browser object. The **selenium_commands** array in the autopkg processor arguments will perform regex matching/transformations using the code written by [Greg Neagle, Timoty Sutton,Per Olofsson, and Michael Moravec](https://github.com/autopkg/autopkg/wiki/Processor-URLTextSearcher).
 
 Example Recipe
-```python:selenium-sample.recipe
+
+```python:docs/samples/selenium-sample.recipe
 
 ```
 
