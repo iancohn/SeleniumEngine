@@ -54,8 +54,12 @@ If not otherwise defined in the processor, SeleniumEngine will return the text o
 
 
 ## Installation
+<!-- autopkg repo-add 
+autopkg repo-add https://github.com/autopkg/iancohn-autopkg-recipes.git
+autopkg install SeleniumEngine
+-->
 ```bash
-autopkg run SeleniumEngine.install
+
 ```
 ## Code Samples
 [Full Recipe Sample 1](docs/samples/selenium-sample.recipe): A simple recipe that returns the definition of a word as an autopkg variable
